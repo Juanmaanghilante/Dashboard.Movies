@@ -1,0 +1,22 @@
+/* Table.css */
+.table-container {
+   
+    
+  }
+  
+  .movie-table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin: 0 auto; 
+  }
+  
+  .movie-table th, .movie-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .movie-table th {
+    background-color: #f2f2f2;
+  }
+  
