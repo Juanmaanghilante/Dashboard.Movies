@@ -1,18 +1,31 @@
 import React from 'react'
-const TableRow = ({id,title,duration,rating,genre,awards}) => {
-  return ( 
-    <tr>
-      <td>{id}</td>
-      <td>{title}</td>
-      <td>{duration}</td>
-      <td>{rating}</td>
-      <td>{genre ? genre.name : 'Sin Género'}</td>
-      <td>{awards}</td>
-    </tr>
-   );
+
+import MoviesInDb from './MoviesInDb'
+
+
+
+
+export default function TableRow({ data, header }) {
+  console.log(data);
+
+  
+  return (
+   
+    data.map((row, i) => (
+      <MoviesInDb key={row +i} data={{ ...row }} header={header} />
+    ))
+   
+
+
+
+  );
 }
- 
-export default TableRow;
+
+
+
+
+
+
 
 
 

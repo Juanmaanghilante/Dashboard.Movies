@@ -5,8 +5,9 @@ import Footer from './Footer';
 import Table from "./table/Table";
 
 
-function ContentWraper (){
-    return(
+function ContentWraper ({userInfo,productInfo}){
+
+   return(
 <>
 <div id="content">
 <TopBar/>
@@ -14,8 +15,11 @@ function ContentWraper (){
 <ContentRowTop/>
 
 
-<Table  />
+<Table  data={productInfo.products}
+              header={["id", "name", "description", "detail", "category"]}  />
 
+<Table  data={userInfo.users}
+              header={["id", "name", "email", "detail"]}/>
 <Footer/>
 </div>
 
