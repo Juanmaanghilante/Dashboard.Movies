@@ -114,7 +114,7 @@ console.log(data);
           <GenresinDb  categories={Object.keys(productInfo.countByCategory)} />
         </Route>
         <Route path="/lastMovieindb" exact={true} productInfo={productInfo} userInfo={userInfo}    >
-          <LastMovieindb user={Object.keys(userInfo.count)} /> 
+          <LastMovieindb />
         </Route>
         <Route path="/contentRowMovies" exact={true}  productInfo={productInfo} userInfo={userInfo}>
           <ContentRowMovies />

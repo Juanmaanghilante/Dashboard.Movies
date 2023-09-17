@@ -5,7 +5,7 @@ import GenresInDb from './GenresInDb'
 
 import ContentRowMovies from './ContentRowMovies'
 
-export default function ContentRowTop({data,header,categories}) {
+export default function ContentRowTop({data,header,categories,user}) {
  console.log(categories);
       return (
       

@@ -12,7 +12,7 @@ function ContentWraper ({userInfo,productInfo}){
 <div id="content">
 <TopBar/>
 
-<ContentRowTop categories={Object.keys(productInfo.countByCategory)} user={Object.keys( userInfo.count)}/>
+<ContentRowTop categories={Object.keys(productInfo.countByCategory)} user={Object.keys(userInfo)}/>
 
 
 <Table  data={productInfo.products}
