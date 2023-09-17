@@ -5,8 +5,10 @@ import GenresInDb from './GenresInDb'
 
 import ContentRowMovies from './ContentRowMovies'
 
-export default function ContentRowTop({data,header}) {
-  return (
+export default function ContentRowTop({data,header,categories}) {
+ console.log(categories);
+      return (
+      
     <div className="container-fluid">
           <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Impact X Dashboard</h1>
@@ -14,8 +16,8 @@ export default function ContentRowTop({data,header}) {
                 <ContentRowMovies data={data} header={header} />
                 
           <div className="row">
-                <LastMovieInDb />
-                <GenresInDb />
+                <LastMovieInDb  user={user}/>
+                <GenresInDb  categories={categories} />
           </div>
     </div>
 

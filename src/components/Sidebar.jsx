@@ -9,6 +9,7 @@ import ContentRowMovies from "./ContentRowMovies";
 import NotFound from "./NotFound";
 import { useEffect } from "react";
 import { useState } from "react";
+import { object } from "prop-types";
 
 function Sidebar() {
   const [userInfo, setUserInfo] = useState({ count: 0,users: [],});
@@ -21,7 +22,7 @@ async function fetchData(endpoint, setState) {
     try {
       const apiFetch = await fetch(endpoint);
       const data = await apiFetch.json();
-
+console.log(data);
       setState(data.data);
     } catch (e) {
       console.error(e);
@@ -78,7 +79,7 @@ async function fetchData(endpoint, setState) {
         <li className="nav-item">
           <Link className="nav-link collapsed" to="/lastMovieindb">
             <i className="fas fa-fw fa-folder"></i>
-            <span>Last Movie in Db</span>
+            <span>Ultimo producto en la base de datos</span>
           </Link>
         </li>
 
@@ -107,11 +108,13 @@ async function fetchData(endpoint, setState) {
         <Route path="/" exact ={true}>
           <ContentWraper productInfo={productInfo} userInfo={userInfo} />
         </Route>
-        <Route path="/genreinDb" exact={true} >
+        <Route path="/genres" exact element={<GenresinDb
+        categories={ Object.keys(productInfo.countByCategory)}/>
+        } >
           <GenresinDb  categories={Object.keys(productInfo.countByCategory)} />
         </Route>
         <Route path="/lastMovieindb" exact={true} productInfo={productInfo} userInfo={userInfo}    >
-          <LastMovieindb />
+          <LastMovieindb user={Object.keys(userInfo.count)} /> 
         </Route>
         <Route path="/contentRowMovies" exact={true}  productInfo={productInfo} userInfo={userInfo}>
           <ContentRowMovies />
