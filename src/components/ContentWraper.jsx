@@ -3,7 +3,7 @@ import TopBar from "./TopBar"
 import ContentRowTop from "./ContentRowTop";
 import Footer from './Footer';
 import Table from "./table/Table";
-
+import  '../assets/css/contenWrapper.css'
 
 function ContentWraper ({userInfo,productInfo}){
 
@@ -12,7 +12,8 @@ function ContentWraper ({userInfo,productInfo}){
 <div id="content">
 <TopBar/>
 
-<ContentRowTop categories={Object.keys(productInfo.countByCategory)} user={Object.keys(userInfo)}/>
+<ContentRowTop categories={Object.keys(productInfo.countByCategory)} userInfo={userInfo} productInfo={productInfo}
+         />
 
 
 <Table  data={productInfo.products}

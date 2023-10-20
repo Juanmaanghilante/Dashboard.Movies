@@ -1,5 +1,5 @@
 import React from "react";
-import image from '../assets/images/logo-impactx.png';
+import image from "../assets/images/logo-impactx.png";
 import { Link, Route, Switch } from "react-router-dom";
 import ContentWraper from "./ContentWraper";
 import LastMovieindb from "./LastMovieInDb";
@@ -12,17 +12,18 @@ import { useState } from "react";
 import { object } from "prop-types";
 
 function Sidebar() {
-  const [userInfo, setUserInfo] = useState({ count: 0,users: [],});
+  const [userInfo, setUserInfo] = useState({ count: 0, users: [] });
   const [productInfo, setProductInfo] = useState({
     count: 0,
     countByCategory: {},
-    products: [], });
+    products: [],
+  });
 
-async function fetchData(endpoint, setState) {
+  async function fetchData(endpoint, setState) {
     try {
       const apiFetch = await fetch(endpoint);
       const data = await apiFetch.json();
-console.log(data);
+      console.log(data);
       setState(data.data);
     } catch (e) {
       console.error(e);
@@ -36,9 +37,7 @@ console.log(data);
         fetchData("/api/products", setProductInfo),
       ]);
     }
-    data()
-    
-    
+    data();
   }, []);
 
   return (
@@ -105,27 +104,47 @@ console.log(data);
       {/*<!-- End of Sidebar -->*/}
 
       <Switch>
-        <Route path="/" exact ={true}>
+        <Route path="/" exact={true}>
           <ContentWraper productInfo={productInfo} userInfo={userInfo} />
         </Route>
-        <Route path="/genres" exact element={<GenresinDb
-        categories={ Object.keys(productInfo.countByCategory)}/>
-        } >
-          <GenresinDb  categories={Object.keys(productInfo.countByCategory)} />
+        <Route
+          path="/genreinDb"
+          exact
+          element={
+            <GenresinDb categories={Object.keys(productInfo.countByCategory)} />
+          }
+        >
+          <GenresinDb categories={Object.keys(productInfo.countByCategory)} />
         </Route>
-        <Route path="/lastMovieindb" exact={true} productInfo={productInfo} userInfo={userInfo}    >
-          <LastMovieindb />
+        <Route path="/lastMovieindb"    >
+       
+            
+  render(){  <LastMovieindb  exact={true} productInfo=
+{productInfo}  user={userInfo.users[userInfo.users.length -1]}/>}
+
+       
         </Route>
-        <Route path="/contentRowMovies" exact={true}  productInfo={productInfo} userInfo={userInfo}>
-          <ContentRowMovies />
+
+
+
+
+
+        <Route
+          path="/contentRowMovies"
+          exact={true}
+         
+        >
+          <ContentRowMovies productInfo={productInfo}
+          userInfo={userInfo} />
         </Route>
+        
+        
         <Route
           path="/tableUser"
           exact={true}
           element={
             <Table
-              data={userInfo.users
-              }
+              data={userInfo.users}
               header={["id", "name", "email", "detail"]}
             />
           }

@@ -1,8 +1,24 @@
-import React from 'react';
-import image from '../assets/images/mandalorian.jpg';
+import React ,{useEffect,useState} from 'react';
 
-export default function LastMovieInDb() {
-  return(
+
+export default function LastMovieInDb(props) {
+
+const [user,setUser]=useState({})
+      
+useEffect(()=>{
+      async function data(){
+            if (props.user){
+                  setUser(props.user)
+            }
+      }
+      data()
+},[props])
+      
+
+console.log('aca esta');
+console.log(props);
+
+      return(
 
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
@@ -12,10 +28,12 @@ export default function LastMovieInDb() {
                   <div className="card-body">
                             <div className="text-center">
                               
-                              <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "40rem" }} src={image} alt=" Star Wars - Mandalorian " />
+                              <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "40rem" }} src={`img/${user.avatar}`} alt=" Star Wars - Mandalorian " />
                             </div>
-                                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa citationem ratione aperiam voluptatum non corporis ratione aperiam voluptatum quae dolorem culpa ratione aperiam voluptatum?</p>
-                                      <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View movie detail</a>
+                                  <h1>name:{user.name}</h1>
+                                  <p>email:{user.email}</p>
+                                  <p>deatil :{user.detail}</p> 
+                                      <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View user detail</a>
                   </div>
             </div>
         </div>
